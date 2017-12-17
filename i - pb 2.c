@@ -7,8 +7,7 @@ struct Node{
 
 struct Node *first, *last, *current;
 
-void createSimpleLinkedList(struct Node* first, int nb_elements);
-void displayList(struct Node* first);
+void displayList();
 
 int main()
 {
@@ -16,17 +15,9 @@ int main()
     int i;
     printf("Input number of elements: ");
     scanf("%i", &nb_elements);
+    printf("\n");
 
-    createSimpleLinkedList(first, nb_elements);
-    printf("%i", first->info);
-    displayList(first);
-}
-
-
-void createSimpleLinkedList(struct Node* first, int nb_elements)
-{
     first = NULL;
-    int i;
     for(i = 0; i < nb_elements; ++i)
     {
         current = (struct Node*)malloc(sizeof(struct Node));
@@ -45,14 +36,20 @@ void createSimpleLinkedList(struct Node* first, int nb_elements)
             last = current;
         }
     }
+
+    displayList();
+
 }
 
-void displayList(struct Node* first)
+void displayList()
 {
+    printf("\nDisplaying the list... \n");
     current = first;
     while(current->next != NULL)
     {
         printf("%i  ", current->info);
         current = current -> next;
     }
+
+    printf("%i", last->info);
 }
